@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health Assessment Result</title>
+    <style>
+        /* Body */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(result.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333; /* Text color */
+        }
+
+        /* Result Container */
+        .result-container {
+            background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Result Text */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        #severity {
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            color: #00796b; /* Teal color for severity level */
+        }
+
+        /* Description Text */
+        .description {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+
+        /* Next Button */
+        .next-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00796b;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+            font-size: 24px;
+        }
+
+        .next-button:hover {
+            background-color: #005a4f;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Your Mental Health Severity</h1>
+        <p>Your assessment indicates that your mental health severity level is:</p>
+        <p><strong id="severity"></strong></p>
+        <p class="description">We understand that dealing with high levels of anxiety or stress can be challenging, but you're not alone on this journey. There are resources and support available to help you manage and improve your mental well-being.</p>
+        <a class="next-button" href="dashboard.html">Next</a>
+    </div>
+
+    <script>
+        // Retrieve the severity level from the URL's query parameters
+        var urlParams = new URLSearchParams(window.location.search);
+        var anxietySeverity = urlParams.get("anxiety");
+        var ptsdSeverity = urlParams.get("ptsd");
+
+        // Display the appropriate severity level based on which assessment was taken
+        var severityElement = document.getElementById("severity");
+        if (anxietySeverity) {
+            severityElement.textContent = "Anxiety: " + anxietySeverity;
+        } else if (ptsdSeverity) {
+            severityElement.textContent = "PTSD: " + ptsdSeverity;
+        }
+    </script>
+</body>
+</html>

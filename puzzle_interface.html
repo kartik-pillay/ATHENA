@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Word Puzzle Game Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #3d5afe; /* Indigo */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .title-image {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #00796b; /* Teal */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #005346; /* Darker Teal */
+    }
+
+    .game-description {
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <img class="title-image" src="puzzle-logo.jpg" alt="Word Puzzle Game Logo">
+  <h1>Welcome to the Word Puzzle Game</h1>
+  <div class="button-container">
+    <button class="button" onclick="startGame()">Start Game</button>
+    <button class="button" onclick="backToGames()">Back to Games</button>
+  </div>
+
+  <p class="game-description">The Word Puzzle Game is a fun word game where you need to form words by clicking on the letters. Try to complete the words and earn a high score!</p>
+
+  <script>
+    function startGame() {
+      // Redirect to puzzle.html when starting the game
+      window.location.href = "puzzle.html";
+    }
+
+    function backToGames() {
+      // Redirect back to games.html when clicking "Back to Games"
+      window.location.href = "games.html";
+    }
+  </script>
+</body>
+</html>

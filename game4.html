@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b2ebf2; /* Light Blue */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            color: #00796b; /* Teal */
+            font-size: 36px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            border: 2px solid #00796b;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .card.flip {
+            background-color: #00796b;
+            color: #ffffff;
+        }
+
+        .game-status {
+            margin-top: 20px;
+            color: #00796b;
+            font-size: 18px;
+        }
+
+        .timer {
+            font-size: 24px;
+            color: #d32f2f; /* Red for urgency */
+            margin-bottom: 20px;
+        }
+
+        .next-level {
+            padding: 12px 24px;
+            background-color: #00796b; /* Teal */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .next-level:hover {
+            background-color: #005346;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background-color: #00796b; /* Teal */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .home-button:hover {
+            background-color: #005346;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memory Match Game</h1>
+
+    <!-- Home Button -->
+    <button class="home-button" onclick="goHome()">Home</button>
+
+    <div class="timer">Time Left: <span id="time-left">30</span>s</div>
+    <div class="grid"></div>
+    <p class="game-status">Find all the matching pairs!</p>
+    <button class="next-level" onclick="startNextLevel()">Next Level</button>
+
+    <script>
+        let level = 1;
+        let cardsArray;
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let timeLeft = 30; // Set timer in seconds
+        let timerInterval;
+
+        // Card sets for each level
+        const levels = [
+            ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D'], // Level 1: 8 cards
+            ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F'], // Level 2: 12 cards
+            ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H'], // Level 3: 16 cards
+        ];
+
+        // Shuffle function to randomize the cards
+        function shuffle(array) {
+            array.sort(() => Math.random() - 0.5);
+        }
+
+        // Timer function to count down and eliminate player
+        function startTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 30 - (level * 5); // Reduce time as levels increase
+            document.getElementById('time-left').textContent = timeLeft;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('time-left').textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.querySelector('.game-status').textContent = 'Time is up! You lost!';
+                    disableCards();
+                }
+            }, 1000);
+        }
+
+        // Disable card clicking after losing
+        function disableCards() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => card.removeEventListener('click', flipCard));
+        }
+
+        // Create card elements
+        function createCards() {
+            const grid = document.querySelector('.grid');
+            grid.innerHTML = ''; // Clear previous cards
+            cardsArray = levels[level - 1]; // Load cards for the current level
+            shuffle(cardsArray);
+
+            // Adjust the grid size based on level
+            const columns = Math.sqrt(cardsArray.length) > 4 ? Math.sqrt(cardsArray.length) : 4;
+            grid.style.gridTemplateColumns = `repeat(${columns}, 100px)`;
+
+            cardsArray.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.classList.add('card');
+                cardElement.dataset.value = card;
+                cardElement.addEventListener('click', flipCard);
+                grid.appendChild(cardElement);
+            });
+        }
+
+        // Flip card function
+        function flipCard() {
+            if (flippedCards.length < 2 && !this.classList.contains('flip')) {
+                this.classList.add('flip');
+                this.textContent = this.dataset.value;
+                flippedCards.push(this);
+
+                if (flippedCards.length === 2) {
+                    checkForMatch();
+                }
+            }
+        }
+
+        // Check for a match
+        function checkForMatch() {
+            const [firstCard, secondCard] = flippedCards;
+            if (firstCard.dataset.value === secondCard.dataset.value) {
+                matchedPairs++;
+                flippedCards = [];
+
+                if (matchedPairs === cardsArray.length / 2) {
+                    clearInterval(timerInterval);
+                    document.querySelector('.game-status').textContent = 'You found all pairs! Well done!';
+                    document.querySelector('.next-level').style.display = 'block';
+                }
+            } else {
+                setTimeout(() => {
+                    firstCard.classList.remove('flip');
+                    secondCard.classList.remove('flip');
+                    firstCard.textContent = '';
+                    secondCard.textContent = '';
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+
+        // Start the game or next level
+        function startGame() {
+            matchedPairs = 0;
+            flippedCards = [];
+            document.querySelector('.game-status').textContent = 'Find all the matching pairs!';
+            document.querySelector('.next-level').style.display = 'none';
+            createCards();
+            startTimer();
+        }
+
+        function startNextLevel() {
+            level++;
+            if (level > levels.length) {
+                level = 1; // Reset to level 1 after completing all levels
+            }
+            startGame();
+        }
+
+        // Go back to games.html
+        function goHome() {
+            window.location.href = 'games.html';
+        }
+
+        // Initialize game at level 1
+        startGame();
+    </script>
+</body>
+</html>

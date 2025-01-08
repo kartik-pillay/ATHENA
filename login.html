@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent container */
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for the container */
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px; /* Added margin to separate from inputs */
+        }
+
+        form {
+            text-align: left; /* Left-align form elements */
+        }
+
+        label {
+            display: block; /* Display labels as blocks for proper spacing */
+            margin-bottom: 10px; /* Add spacing between labels */
+            color: #555; /* Label text color */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px; /* Adjusted margins for spacing */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .btn {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #005346;
+        }
+
+        .signup-link {
+            margin-top: 10px;
+            color: #333;
+            text-decoration: none;
+            display: block; /* Display as a block for proper spacing */
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="dashboard.html"> <!-- Redirect to "dashboard.html" upon login -->
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Your username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your password">
+
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <a class="signup-link" href="signup.html">Don't have an account? Sign up here.</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #9856ca;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .title-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .button {
+      padding: 12px 24px; /* Increased padding for better clickability */
+      font-size: 18px; /* Slightly larger font size */
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #693675;
+    }
+
+    .game-description {
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+      font-size: 16px; /* Increased font size for better readability */
+    }
+  </style>
+</head>
+<body>
+  <img class="title-image" src="cht.jpg" alt="chatbot Logo">
+  <h1>Welcome to the Athena</h1>
+  <h4>your mental health companion</h4>
+  <div class="button-container">
+    <button class="button" onclick="startGame()">Start Chatting</button>
+    <button class="button" onclick="backToGames()">Back to Menu</button>
+  </div>
+
+     
+        <h2>Disclaimer</h2>
+        <p>Welcome to Athena, your simple interactive mental health chatbot. Before we begin, please take a moment to read and understand the following:</p>
+        <ul>
+          <li><strong>Not a Replacement for Professional Help:</strong> Athena is designed to provide self-help resources, guidance, and support for managing mental health concerns.</li>
+          <li><strong>Self-Help Tool:</strong> Our chatbot aims to assist you in dealing with common mental health problems and offer self-help strategies to improve your well-being.</li>
+          <li><strong>Severity of Cases:</strong> If you are experiencing severet mental health issues. Please seek professional help .</li>
+          <li><strong>Privacy and Data Security:</strong> We respect your privacy and take data security seriously. Your interactions with this chatbot are confidential</li>
+          </ul>
+      </div>
+
+  <script>
+    function startGame() {
+      // Redirect to snake.html when starting the game
+      window.location.href = "templates/index.html";
+    }
+
+    function backToGames() {
+      // Redirect back to games.html when clicking "Back to Games"
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>

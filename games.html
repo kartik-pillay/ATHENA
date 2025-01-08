@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Games</title>
+    <style>
+        /* Add your styling for games.html here */
+        body {
+            font-family: Roboto, sans-serif;
+            background-image:url(app.jpg);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh; /* Set the body to take the full viewport height */
+            justify-content: center; /* Center the content vertically */
+        }
+
+        /* Header Container */
+        .header-container {
+            background-color: #693675;
+            color: white;
+            text-align: center;
+            padding: 10px 0; /* Adjust padding */
+            border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
+            width: 100%;
+            position: fixed; /* Fix the header container at the top */
+            top: 0; /* Position it at the top of the viewport */
+            z-index: 2; /* Ensure it appears above other elements */
+        }
+
+        .user-profile {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0; /* Remove margin */
+            padding: 10px 0; /* Add padding for spacing */
+        }
+
+        .greeting {
+            font-size: 18px;
+        }
+
+        /* Navigation Container */
+        .navigation-container {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0; /* Add padding to the top and bottom */
+            border-radius: 0; /* Remove border-radius */
+            width: 100%;
+            position: fixed; /* Fix the navigation container at the top */
+            top: 60px; /* Position it below the user bar container */
+            z-index: 3; /* Ensure it appears above other elements */
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center; /* Center the navigation links horizontally */
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 10px; /* Add some spacing between navigation links */
+        }
+
+        /* Games Sections Container */
+        .sections-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow sections to wrap to the next row */
+            justify-content: space-around; /* Center sections horizontally with space between */
+            width: 90%; /* Set the width of the sections container */
+            max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+            margin: 140px auto 20px; /* Add space below the user bar and center horizontally */
+        }
+
+        /* Games Sections */
+        .section {
+            border-radius: 10px;
+            text-align: center;
+            width: 200px; /* Set both width and height to create cube sections */
+            height: 200px; /* Set both width and height to create cube sections */
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            overflow: hidden; /* Hide overflow content (images) */
+            background-color: rgba(255, 255, 255, 0.8); /* Add a transparent background color */
+            margin: 10px; /* Add spacing between sections */
+        }
+
+        .section img {
+            width: 100%; /* Make the image take the full width of the section */
+            height: 100%; /* Make the image fill the entire section height */
+            object-fit: cover; /* Cover the entire section with the image */
+        }
+
+        .section:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hide the image caption */
+        .section h2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Container -->
+    <div class="header-container">
+        <div class="user-profile">
+            User: John Doe <!-- Replace with the user's name -->
+        </div>
+        <div class="greeting">
+            <script>
+                // Greet the user based on the time of day
+                var today = new Date();
+                var hour = today.getHours();
+                var greeting = "morning";
+
+                if (hour >= 12 && hour < 17) {
+                    greeting = "afternoon";
+                } else if (hour >= 17) {
+                    greeting = "evening";
+                }
+
+                document.write("Good " + greeting + ", John!");
+            </script>
+        </div>
+    </div>
+
+    <!-- Navigation Container -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <a href="dashboard.html">Home</a> <!-- Link back to explore.html -->
+        </div>
+    </div>
+
+    <!-- Games Sections Container -->
+    <div class="sections-container">
+        <!-- Create 3 sections in the first row -->
+        <!-- Section 1 -->
+        <div class="section" onclick="window.location.href='snake_interface.html'">
+            <img src="snake-logo.jpg" alt="Snake Game Logo">
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section" onclick="window.location.href='puzzle_interface.html'">
+            <img src="puzzle-logo.jpg" alt="word puzzle">
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section" onclick="window.location.href='tic toc toe_interface.html'">
+            <img src="tic-tac-toe-logo.jpg" alt="tic toc toe">
+        </div>
+        <div class="section" onclick="window.location.href='game4.html'">
+            <img src="gam5.jpeg" alt="tic toc toe">
+        </div>
+        <div class="section" onclick="window.location.href='game5.html'">
+            <img src="game4.jpeg" alt="tic toc toe">
+        </div>
+    </div>
+</body>
+</html>

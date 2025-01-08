@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic-Tac-Toe Game Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3e5f5; /* Mild purple background color */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #673ab7; /* Mild purple text color */
+    }
+
+    .title-image {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #7e57c2; /* Mild purple button background color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #5e35b1; /* Darker purple button background color on hover */
+    }
+
+    .game-description {
+      margin-top: 20px;
+      color: #512da8; /* Darker purple text color for game description */
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <img class="title-image" src="tic-tac-toe-logo.jpg" alt="Tic-Tac-Toe Game Logo">
+  <h1>Welcome to Tic-Tac-Toe</h1>
+  <div class="button-container">
+    <button class="button" onclick="startGame()">Start Game</button>
+    <button class="button" onclick="backToGames()">Back to Games</button>
+  </div>
+
+  <p class="game-description">Tic-Tac-Toe is a classic two-player game where you take turns marking a 3x3 grid with your symbol (X or O) to win. Be the first to get three of your symbols in a row, column, or diagonal to win the game!</p>
+
+  <script>
+    function startGame() {
+      // Redirect to tic-tac-toe.html when starting the game
+      window.location.href = "tic toc toe.html";
+    }
+
+    function backToGames() {
+      // Redirect back to games.html when clicking "Back to Games"
+      window.location.href = "games.html";
+    }
+  </script>
+</body>
+</html>

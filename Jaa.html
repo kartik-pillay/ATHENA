@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anxiety Assessment</title>
+    <style>
+        /* Add a stylish and attractive design for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(anxiety.jpg);
+            background-size: cover; /* Scale the image to fit the full screen */
+            background-position: center; /* Center the image horizontally and vertically */
+            background-attachment: fixed; /* Prevent the image from scrolling with the page */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff; /* Set text color to white for better readability on the background image */
+        }
+
+        .question {
+            display: none;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        /* Style the result container */
+        #result {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        #anxietyLevel {
+            font-size: 18px;
+        }
+
+        /* Style the navigation arrows */
+        .arrow {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #prevArrow {
+            display: none;
+        }
+
+        #nextArrow {
+            display: none;
+        }
+
+      
+    </style>
+</head>
+<body>
+    <h1>Anxiety Assessment</h1>
+
+    <!-- Questions Container -->
+    <div id="questions-container">
+        <!-- Question 1 -->
+        <div class="question" id="question1">
+            <span>1. Over the past two weeks, have you felt excessively worried or anxious about a variety of situations or events, even when there is little or no reason to be concerned?</span><br>
+            <input type="radio" name="q1" value="0"> Not at all
+            <input type="radio" name="q1" value="1"> Occasionally
+            <input type="radio" name="q1" value="2"> Often
+            <input type="radio" name="q1" value="3"> Almost all the time
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question" id="question2">
+            <span>2. During the past two weeks, have you experienced restlessness or found it difficult to sit still due to feelings of anxiety?</span><br>
+            <input type="radio" name="q2" value="0"> Not at all
+            <input type="radio" name="q2" value="1"> Occasionally
+            <input type="radio" name="q2" value="2"> Often
+            <input type="radio" name="q2" value="3"> Almost all the time
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question" id="question3">
+            <span>3. Have you had difficulty concentrating or your mind going blank because of anxious thoughts over the past two weeks?</span><br>
+            <input type="radio" name="q3" value="0"> Not at all
+            <input type="radio" name="q3" value="1"> Occasionally
+            <input type="radio" name="q3" value="2"> Often
+            <input type="radio" name="q3" value="3"> Almost all the time
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question" id="question4">
+            <span>4. Have you experienced physical symptoms like muscle tension, trembling, or a racing heart due to anxiety in the past two weeks?</span><br>
+            <input type="radio" name="q4" value="0"> Not at all
+            <input type="radio" name="q4" value="1"> Occasionally
+            <input type="radio" name="q4" value="2"> Often
+            <input type="radio" name="q4" value="3"> Almost all the time
+        </div>
+
+        <!-- Question 5 -->
+        <div class "question" id="question5">
+            <span>5. Have you avoided situations or activities because they make you feel anxious or panicky over the past two weeks?</span><br>
+            <input type="radio" name="q5" value="0"> Not at all
+            <input type="radio" name="q5" value="1"> Occasionally
+            <input type="radio" name="q5" value="2"> Often
+            <input type="radio" name="q5" value="3"> Almost all the time
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question" id="question6">
+            <span>6. Have you had trouble falling asleep or staying asleep due to excessive worry or anxiety over the past two weeks?</span><br>
+            <input type="radio" name="q6" value="0"> Not at all
+            <input type="radio" name="q6" value="1"> Occasionally
+            <input type="radio" name="q6" value="2"> Often
+            <input type="radio" name="q6" value="3"> Almost all the time
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question" id="question7">
+            <span>7. Have you felt a sense of dread or impending doom without a specific cause in the past two weeks?</span><br>
+            <input type="radio" name="q7" value="0"> Not at all
+            <input type="radio" name="q7" value="1"> Occasionally
+            <input type="radio" name="q7" value="2"> Often
+            <input type="radio" name="q7" value="3"> Almost all the time
+        </div>
+    </div>
+
+    <!-- Navigation arrows -->
+    <span class="arrow" id="prevArrow" onclick="previousQuestion()">&#9664;</span>
+    <span class="arrow" id="nextArrow" onclick="nextQuestion()">&#9654;</span>
+
+    <!-- Calculate Button -->
+    <button id="calculateButton" onclick="calculateAnxietyLevel()" style="display: none;">Calculate Anxiety Level</button>
+
+    <!-- Display Anxiety Level -->
+    <div id="result">
+        <h2>Your Anxiety Level:</h2>
+        <p id="anxietyLevel"></p>
+    </div>
+
+    <!-- JavaScript to manage questions -->
+    <script>
+        var currentQuestion = 1;
+        var totalScore = 0;
+        var questions = document.querySelectorAll('.question');
+
+        // Show the first question initially
+        questions[0].style.display = 'block';
+        document.getElementById('nextArrow').style.display = 'block';
+
+        function nextQuestion() {
+            var radios = document.getElementsByName('q' + currentQuestion);
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    totalScore += parseInt(radios[i].value);
+                    break;
+                }
+            }
+
+            if (currentQuestion < questions.length) {
+                questions[currentQuestion - 1].style.display = 'none';
+                currentQuestion++;
+                questions[currentQuestion - 1].style display = 'block';
+
+                if (currentQuestion === questions.length) {
+                    document.getElementById('nextArrow').style.display = 'none';
+                    document.getElementById('calculateButton').style.display = 'block';
+                }
+
+                if (currentQuestion > 1) {
+                    document.getElementById('prevArrow').style.display = 'block';
+                }
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                questions[currentQuestion - 1].style.display = 'none';
+                currentQuestion--;
+                questions[currentQuestion - 1].style.display = 'block';
+
+                if (currentQuestion === 1) {
+                    document.getElementById('prevArrow').style.display = 'none';
+                }
+
+                if (currentQuestion < questions.length) {
+                    document.getElementById('nextArrow').style.display = 'block';
+                    document.getElementById('calculateButton').style.display = 'none';
+                }
+            }
+        }
+
+        function calculateAnxietyLevel() {
+            // Determine the anxiety level based on the total score
+            var anxietyLevel = "";
+            if (totalScore >= 0 && totalScore <= 4) {
+                anxietyLevel = "You're experiencing minimal anxiety, which is completely normal and manageable. Everyone has occasional moments of worry or unease. It's a part of life, and it can even be motivating. Continue to practice self-care and mindfulness to keep stress in check.";
+            } else if (totalScore >= 5 && totalScore <= 9) {
+                anxietyLevel = "You're dealing with moderate anxiety, a common response to life's challenges. It's important to acknowledge your feelings and seek support when needed. Remember, you're not alone in this, and there are effective strategies to help you regain a sense of balance and calm.";
+            } else if (totalScore >= 10 && totalScore <= 14) {
+                anxietyLevel = "You're grappling with high anxiety, which can be overwhelming and exhausting. It's crucial to prioritize self-care and consider reaching out to a mental health professional. With the right support, you can gain control over your anxiety and start on a path towards a more peaceful state of mind.";
+            } else if (totalScore >= 15 && totalScore <= 21) {
+                anxietyLevel = "Your anxiety is at a very high level, making everyday life extremely challenging. This is the time to seek professional help and connect with those who care about your well-being. Remember, there's hope, and with the right treatment and support, you can regain a sense of calm and stability.";
+            }
+
+            document.getElementById('anxietyLevel').textContent = anxietyLevel;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+

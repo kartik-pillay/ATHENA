@@ -1,0 +1,68 @@
+templates/chat.html<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Athena - Your Mental Health Companion</title>
+    <style>
+        /* Add a stylish and unique design for the greeting */
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(app.jpg) no-repeat center center fixed; /* Updated background image styling */
+            background-size: cover; /* Cover the entire viewport */
+        }
+
+        .greeting-container {
+            background-color: rgba(0, 0, 0, 0); /* Transparent background color */
+            color: #fff; /* White text */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+        }
+
+        .app-name {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff6f61; /* A vibrant, eye-catching color */
+        }
+
+        .tagline {
+            font-size: 24px;
+            margin-top: 20px;
+            line-height: 1.5; /* Improved line spacing for readability */
+        }
+
+        /* Style the Start button */
+        .start-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #00796b, #005a4f); /* Gradient fill */
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+            font-size: 24px;
+        }
+
+        .start-button:hover {
+            background: linear-gradient(to left, #005a4f, #00796b); /* Gradient fill on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="greeting-container">
+        <h1>Welcome to <span class="app-name">Athena</span></h1>
+        <p class="tagline">Your Mental Health Companion</p>
+        <p>Your well-being matters. We are here to help you on your journey to mental health.</p>
+        <a class="start-button" href="login.html">Start</a>
+    </div>
+</body>
+</html>

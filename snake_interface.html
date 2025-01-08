@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #3d5afe;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .title-image {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .button {
+      padding: 12px 24px; /* Increased padding for better clickability */
+      font-size: 18px; /* Slightly larger font size */
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #005346;
+    }
+
+    .game-description {
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+      font-size: 16px; /* Increased font size for better readability */
+    }
+  </style>
+</head>
+<body>
+  <img class="title-image" src="snake-logo.jpg" alt="Snake Game Logo">
+  <h1>Welcome to the Snake Game</h1>
+  <div class="button-container">
+    <button class="button" onclick="startGame()">Start Game</button>
+    <button class="button" onclick="backToGames()">Back to Games</button>
+  </div>
+
+  <p class="game-description">The Snake Game is a classic arcade game where you control a snake that must eat food to grow longer. Avoid hitting the walls or the snake's own body, or the game is over.</p>
+
+  <script>
+    function startGame() {
+      // Redirect to snake.html when starting the game
+      window.location.href = "snake.html";
+    }
+
+    function backToGames() {
+      // Redirect back to games.html when clicking "Back to Games"
+      window.location.href = "games.html";
+    }
+  </script>
+</body>
+</html>

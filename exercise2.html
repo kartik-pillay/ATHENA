@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Exercise: Diaphragmatic Breathing</title>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            background-image: url('app.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: flex-start;
+            color: white;
+        }
+
+        /* Header Container */
+        .header-container {
+            background-color: #693675;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 0 0 10px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+        }
+
+        .user-profile {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .greeting {
+            font-size: 18px;
+        }
+
+        /* Navigation Container */
+        .navigation-container {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            top: 60px;
+            z-index: 3;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 160px auto 0; /* Adjusted margin for header */
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4b4c4e;
+        }
+
+        .steps {
+            margin: 2rem 0;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+            border: none;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Container -->
+    <div class="header-container">
+        <div class="user-profile">
+            User: John Doe <!-- Replace with the user's name -->
+        </div>
+        <div class="greeting">
+            <script>
+                // Greet the user based on the time of day
+                var today = new Date();
+                var hour = today.getHours();
+                var greeting = "morning";
+
+                if (hour >= 12 && hour < 17) {
+                    greeting = "afternoon";
+                } else if (hour >= 17) {
+                    greeting = "evening";
+                }
+
+                document.write("Good " + greeting + ", John!");
+            </script>
+        </div>
+    </div>
+
+    <!-- Navigation Container -->
+    <div class="navigation-container">
+        <div class="navigation">
+            <a href="dashboard.html">Home</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Diaphragmatic Breathing (Belly Breathing)</h1>
+        <h2>Steps for Diaphragmatic Breathing</h2>
+        <div class="steps">
+            <div class="step">
+                <strong>1. Find a Comfortable Position:</strong>
+                Sit or lie down in a comfortable position. You may want to place a pillow under your head if lying down.
+            </div>
+            <div class="step">
+                <strong>2. Hand Placement:</strong>
+                Place one hand on your chest and the other on your abdomen.
+            </div>
+            <div class="step">
+                <strong>3. Inhale:</strong>
+                Breathe in slowly through your nose, allowing your diaphragm to expand. Your abdomen should rise while your chest remains relatively still.
+            </div>
+            <div class="step">
+                <strong>4. Pause (Optional):</strong>
+                Hold your breath for a moment if you feel comfortable.
+            </div>
+            <div class="step">
+                <strong>5. Exhale:</strong>
+                Slowly exhale through your mouth, letting your abdomen fall. Focus on releasing all the air from your lungs.
+            </div>
+            <div class="step">
+                <strong>6. Repeat:</strong>
+                Continue this process for 5 to 10 minutes, focusing on the rise and fall of your abdomen.
+            </div>
+        </div>
+
+        <h2>Watch the Video Guide</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vMjTJf4-xz0" allowfullscreen></iframe>
+    </main>
+
+    <footer>
+        &copy; 2024 Breathing Exercises. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Information Form</title>
+    <style>
+        /* Add a stylish and attractive design for the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(app.jpg);
+            background-size: cover; /* Scale the image to fit the full screen */
+            background-position: center; /* Center the image horizontally and vertically */
+            background-attachment: fixed; /* Prevent the image from scrolling with the page */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0); /* Transparent container */
+            color: #000; /* Black text */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Style the radio buttons and labels */
+        .radio-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .radio-label {
+            font-size: 24px;
+            font-weight: bold; /* Make text bold */
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Style the radio input */
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        /* Style the Next button */
+        .next-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00796b; /* Darker teal color */
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .next-button:hover {
+            background-color: #005a4f; /* Hover color */
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <p><strong>Are your problems based on the:</strong></p>
+    <div class="radio-container">
+        <label class="radio-label">
+            <input type="radio" name="problem" value="past"> <strong>Past</strong>
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="problem" value="future"> <strong>Future</strong>
+        </label>
+    </div>
+    <br>
+    <a class="next-button" onclick="redirectPage()"><strong>Next</strong></a>
+</div>
+
+<script>
+    function redirectPage() {
+        var selectedOption = document.querySelector('input[name="problem"]:checked');
+        if (selectedOption) {
+            var nextPage = selectedOption.value === "past" ? "ptsd.html" : "anxiety.html";
+            window.location.href = nextPage;
+        }
+    }
+</script>
+</body>
+</html>
