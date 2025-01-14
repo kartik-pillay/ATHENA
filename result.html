@@ -3,6 +3,24 @@
 <head>
     <title>Mental Health Assessment Result</title>
     <style>
+        /* Styling for the fixed navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: purple;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            color: orange; /* Athena in orange */
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
         /* Body */
         body {
             font-family: Arial, sans-serif;
@@ -18,6 +36,7 @@
             justify-content: center;
             align-items: center;
             color: #333; /* Text color */
+            padding-top: 60px; /* Padding to prevent content from being hidden under the navbar */
         }
 
         /* Result Container */
@@ -27,6 +46,8 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Make the container take most of the screen width */
+            max-width: 600px; /* Restrict the width */
         }
 
         /* Result Text */
@@ -69,12 +90,18 @@
     </style>
 </head>
 <body>
+    <!-- Navbar at the top -->
+    <div class="navbar">
+        <div class="logo">Athena</div>
+    </div>
+
+    <!-- Result Container -->
     <div class="result-container">
         <h1>Your Mental Health Severity</h1>
         <p>Your assessment indicates that your mental health severity level is:</p>
         <p><strong id="severity"></strong></p>
         <p class="description">We understand that dealing with high levels of anxiety or stress can be challenging, but you're not alone on this journey. There are resources and support available to help you manage and improve your mental well-being.</p>
-        <a class="next-button" href="dashboard.html">Next</a>
+        <a class="next-button" href="landing.html">Next</a>
     </div>
 
     <script>

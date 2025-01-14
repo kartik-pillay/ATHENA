@@ -16,8 +16,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Allow navbar and form to be stacked vertically */
         }
 
+        /* Navbar style (fixed at the top) */
+        .navbar {
+            position: fixed; /* Fix the navbar at the top of the screen */
+            top: 0;
+            width: 100%;
+            background-color: purple;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 10; /* Make sure the navbar stays above other content */
+        }
+
+        .navbar .logo {
+            color: orange; /* Orange color for Athena */
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Adjust body content to account for the fixed navbar */
         .form-container {
             background-color: rgba(0, 0, 0, 0); /* Transparent container */
             color: #000; /* Black text */
@@ -25,6 +45,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+            margin-top: 80px; /* Add margin-top to push the form below the fixed navbar */
         }
 
         /* Style the radio buttons and labels */
@@ -68,28 +89,34 @@
     </style>
 </head>
 <body>
-<div class="form-container">
-    <p><strong>Are your problems based on the:</strong></p>
-    <div class="radio-container">
-        <label class="radio-label">
-            <input type="radio" name="problem" value="past"> <strong>Past</strong>
-        </label>
-        <label class="radio-label">
-            <input type="radio" name="problem" value="future"> <strong>Future</strong>
-        </label>
+    <!-- Navbar at the top (fixed) -->
+    <div class="navbar">
+        <div class="logo">Athena</div>
     </div>
-    <br>
-    <a class="next-button" onclick="redirectPage()"><strong>Next</strong></a>
-</div>
 
-<script>
-    function redirectPage() {
-        var selectedOption = document.querySelector('input[name="problem"]:checked');
-        if (selectedOption) {
-            var nextPage = selectedOption.value === "past" ? "ptsd.html" : "anxiety.html";
-            window.location.href = nextPage;
+    <!-- Form Container -->
+    <div class="form-container">
+        <p><strong>Are your problems based on the:</strong></p>
+        <div class="radio-container">
+            <label class="radio-label">
+                <input type="radio" name="problem" value="past"> <strong>Past</strong>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="problem" value="future"> <strong>Future</strong>
+            </label>
+        </div>
+        <br>
+        <a class="next-button" onclick="redirectPage()"><strong>Next</strong></a>
+    </div>
+
+    <script>
+        function redirectPage() {
+            var selectedOption = document.querySelector('input[name="problem"]:checked');
+            if (selectedOption) {
+                var nextPage = selectedOption.value === "past" ? "ptsd.html" : "anxiety.html";
+                window.location.href = nextPage;
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>

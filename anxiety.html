@@ -3,17 +3,36 @@
 <head>
     <title>Anxiety Assessment</title>
     <style>
-        /* Updated styling for a cleaner look */
+        /* Navbar Styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: purple;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            color: orange; /* Athena in orange */
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Updated styling for the page content */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2; /* Light gray background */
+            background-color: #87CEEB; /* Sky blue background */
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
+            padding-top: 60px; /* Padding to prevent content from being hidden under the navbar */
         }
 
         .container {
@@ -23,11 +42,13 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             margin: 10px;
+            width: 90%; /* Make the container take most of the screen width */
+            max-width: 600px; /* Restrict the width */
         }
 
         .question {
             font-size: 18px;
-            margin: 20px 0; /* Improved spacing between questions */
+            margin: 20px 0;
             text-align: left;
         }
 
@@ -56,6 +77,12 @@
     </style>
 </head>
 <body>
+    <!-- Navbar at the top -->
+    <div class="navbar">
+        <div class="logo">Athena</div>
+    </div>
+
+    <!-- Assessment Form -->
     <div class="container">
         <h1>Anxiety Assessment</h1>
 
